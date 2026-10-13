@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "API tasarım dokümanını hazırla",
+    "description": "Endpoint listesi ve veri modeli çıkarılacak",
+    "status": "completed",
+    "priority": "high",
+    "assignee": "musa",
+    "createdAt": "2026-10-01T09:00:00.000Z",
+    "updatedAt": "2026-10-02T14:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Backend altyapısını kur",
+    "description": "Express kurulumu ve klasör yapısı",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "ayse",
+    "createdAt": "2026-10-03T10:15:00.000Z",
+    "updatedAt": "2026-10-03T10:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Postman testlerini yaz",
+    "description": "CRUD uçlarının ekran görüntüleri alınacak",
+    "status": "pending",
+    "priority": "low",
+    "assignee": "can",
+    "createdAt": "2026-10-04T08:45:00.000Z",
+    "updatedAt": "2026-10-04T08:45:00.000Z"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "taskflow",
+  "version": "1.0.0",
+  "description": "TaskFlow - Görev ve Proje Yönetim Sistemi REST API (Node.js ile Backend Programlama Bitirme Projesi)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["nodejs", "express", "rest-api", "crud", "middleware"],
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

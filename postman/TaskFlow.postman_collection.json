@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "TaskFlow API",
+    "description": "TaskFlow CRUD testleri. Sunucu: npm start",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "taskId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "1. Görev Ekleme (POST /tasks)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('201 Created', () => pm.response.to.have.status(201));",
+          "const id = pm.response.json().data.id;",
+          "pm.collectionVariables.set('taskId', id);"
+        ]}
+      }],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"title\": \"Login ekranını geliştir\",\n  \"description\": \"JWT ile giriş akışı\",\n  \"priority\": \"high\",\n  \"assignee\": \"musa\"\n}" },
+        "url": { "raw": "{{baseUrl}}/tasks", "host": ["{{baseUrl}}"], "path": ["tasks"] }
+      }
+    },
+    {
+      "name": "2. Görev Listeleme (GET /tasks)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/tasks", "host": ["{{baseUrl}}"], "path": ["tasks"] }
+      }
+    },
+    {
+      "name": "3. Görev Detayı (GET /tasks/:id)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/tasks/{{taskId}}", "host": ["{{baseUrl}}"], "path": ["tasks", "{{taskId}}"] }
+      }
+    },
+    {
+      "name": "4. Görev Güncelleme (PUT /tasks/:id)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));",
+          "pm.test('status completed', () => pm.expect(pm.response.json().data.status).to.eql('completed'));"
+        ]}
+      }],
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"status\": \"completed\"\n}" },
+        "url": { "raw": "{{baseUrl}}/tasks/{{taskId}}", "host": ["{{baseUrl}}"], "path": ["tasks", "{{taskId}}"] }
+      }
+    },
+    {
+      "name": "5. Görev Silme (DELETE /tasks/:id)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('200 OK', () => pm.response.to.have.status(200));"
+        ]}
+      }],
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{baseUrl}}/tasks/{{taskId}}", "host": ["{{baseUrl}}"], "path": ["tasks", "{{taskId}}"] }
+      }
+    },
+    {
+      "name": "6. Silinen Görev (404 beklenir)",
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('404 Not Found', () => pm.response.to.have.status(404));"
+        ]}
+      }],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/tasks/{{taskId}}", "host": ["{{baseUrl}}"], "path": ["tasks", "{{taskId}}"] }
+      }
+    }
+  ]
+}

@@ -20,8 +20,8 @@ Node.js ve Express.js ile geliştirilmiş, REST API mantığında çalışan bir
 
 ```bash
 # 1) Repoyu indirin
-git clone <REPO_URL>
-cd taskflow
+git clone https://github.com/selinay-polat/taskflow-api.git
+cd taskflow-api
 
 # 2) Bağımlılıkları kurun
 npm install
